@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { AiFillPlusCircle } from "react-icons/ai";
+import CreateNewIcon from "../components/CreateNewIcon";
 
 const Home = () => {
 	return (
@@ -11,8 +11,8 @@ const Home = () => {
 				</div>
 
 				<Link href='/create-invoice'>
-					<a className='flex justify-evenly capitalize text-sm font-semibold items-center rounded-full w-[90px] h-[42px] bg-[#7C5DFA] text-white'>
-						<AiFillPlusCircle /> new
+					<a className='flex justify-evenly capitalize text-sm font-semibold items-center rounded-full w-[90px] h-[42px] bg-[#7C5DFA] text-white px-2'>
+						<CreateNewIcon /> new
 					</a>
 				</Link>
 			</div>

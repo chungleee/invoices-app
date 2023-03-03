@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Link } from "wouter";
 import CreateNewIcon from "../components/CreateNewIcon";
 
 const Home = () => {
+	const [invoices, setInvoices] = useState([]);
+
 	return (
 		<main className='px-6 py-8'>
 			<div className='flex justify-between items-center'>
@@ -16,6 +19,14 @@ const Home = () => {
 					</a>
 				</Link>
 			</div>
+
+			<section>
+				{!invoices.length ? (
+					<h1>There is nothing here</h1>
+				) : (
+					<h1>here are your invoices</h1>
+				)}
+			</section>
 		</main>
 	);
 };

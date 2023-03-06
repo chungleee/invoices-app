@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import CreateNewIcon from "../components/CreateNewIcon";
+import InvoiceCard from "../components/InvoiceCard";
+import { data } from "../data";
 
 const Home = () => {
 	const [invoices, setInvoices] = useState([]);
 
+	useEffect(() => {
+		setInvoices(data);
+	}, []);
+
 	return (
 		<main className='px-6 py-8 h-[calc(100vh-80px)] flex flex-col'>
-			<div className='flex justify-between items-center'>
+			<div className='flex justify-between items-center mb-6'>
 				<div>
 					<h1 className='font-bold text-xl'>Invoices</h1>
 					<h2 className='font-thin text-sm text-[#888EB0]'>
@@ -22,9 +28,9 @@ const Home = () => {
 				</Link>
 			</div>
 
-			<section className='w-2/3 grow flex items-center mx-auto'>
+			<section className='w-full grow flex flex-col justify-center items-center'>
 				{!invoices.length ? (
-					<div className='text-center'>
+					<div className='text-center w-2/3'>
 						<img
 							src='../../public/assets/invoice.svg'
 							alt='No invoices image'
@@ -37,7 +43,9 @@ const Home = () => {
 						</h3>
 					</div>
 				) : (
-					<h1>here are your invoices</h1>
+					invoices.map((invoice) => {
+						return <InvoiceCard invoiceData={invoice} />;
+					})
 				)}
 			</section>
 		</main>

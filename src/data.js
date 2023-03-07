@@ -15,7 +15,7 @@ const data = [
 	},
 	{
 		fullName: "queen stuart",
-		status: "paid",
+		status: "draft",
 		dueDate: "29/12/2021",
 		amountDue: 5540.99,
 		receipt_id: "12829",

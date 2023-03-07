@@ -31,10 +31,7 @@ const Home = () => {
 			<section className='w-full grow flex flex-col justify-center items-center'>
 				{!invoices.length ? (
 					<div className='text-center w-2/3'>
-						<img
-							src='../../public/assets/invoice.svg'
-							alt='No invoices image'
-						/>
+						<img src='/assets/invoice.svg' alt='No invoices image' />
 						<h2 className='font-bold text-xl my-4'>There is nothing here</h2>
 						<h3 className='font-thin text-sm'>
 							Create an invoice by clicking the{" "}

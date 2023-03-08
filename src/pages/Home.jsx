@@ -17,13 +17,21 @@ const Home = () => {
 				<div>
 					<h1 className='font-bold text-xl'>Invoices</h1>
 					<h2 className='font-thin text-sm text-[#888EB0]'>
-						{!invoices.length ? "No invoices" : `${invoices.length} invoices`}
+						{!invoices.length ? (
+							"No invoices"
+						) : (
+							<>
+								<span className='hidden md:inline'>There are</span>{" "}
+								{invoices.length} invoices
+							</>
+						)}
 					</h2>
 				</div>
 
 				<Link href='/create-invoice'>
-					<a className='flex justify-evenly capitalize text-sm font-semibold items-center rounded-full w-[90px] h-[42px] bg-[#7C5DFA] text-white px-2'>
-						<CreateNewIcon /> new
+					<a className='flex justify-evenly capitalize text-sm font-semibold items-center rounded-full min-w-[90px] h-[42px] bg-[#7C5DFA] text-white px-2'>
+						<CreateNewIcon />
+						new<span className='hidden md:inline md:ml-1'> invoice</span>
 					</a>
 				</Link>
 			</div>

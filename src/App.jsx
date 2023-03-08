@@ -5,7 +5,7 @@ import CreateInvoice from "./pages/CreateInvoice";
 
 function App() {
 	return (
-		<div>
+		<div className='lg:flex lg:flex-row'>
 			<Navbar />
 
 			<Route path='/' component={Home} />

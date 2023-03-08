@@ -12,7 +12,7 @@ const Home = () => {
 	}, []);
 
 	return (
-		<main className='px-6 py-8 h-[calc(100vh-80px)] flex flex-col'>
+		<main className='px-6 py-8 h-[calc(100vh-80px)] flex flex-col lg:w-3/4 lg:mx-auto lg:overflow-auto lg:h-screen'>
 			<div className='flex justify-between items-center mb-6'>
 				<div>
 					<h1 className='font-bold text-xl'>Invoices</h1>

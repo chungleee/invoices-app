@@ -21,7 +21,7 @@ const CreateInvoice = () => {
 	};
 
 	return (
-		<main className='pt-6	px-4'>
+		<main className='pt-6	px-4 bg-[#F9FAFE]'>
 			<Link href='/'>
 				<a href='/' className='flex items-center w-fit'>
 					<span>
@@ -81,7 +81,7 @@ const CreateInvoice = () => {
 							label='Project Description'
 							name='projectDescription'
 						/>
-						<div className='col-span-2 flex justify-between py-4 -mx-4 px-4'>
+						<div className='col-span-2 flex justify-between py-4 -mx-4 px-4 bg-white'>
 							<button
 								className='rounded-full px-4 py-4 bg-[#F9FAFE] text-[#7E88C3] text-sm font-semibold'
 								type='button'

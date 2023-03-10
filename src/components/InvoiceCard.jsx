@@ -4,7 +4,7 @@ import RightArrowIcon from "./RightArrowIcon";
 const InvoiceCard = ({ invoiceData }) => {
 	const { fullName, status, dueDate, amountDue, receipt_id } = invoiceData;
 	return (
-		<div className='border border-black rounded-lg w-full px-4 py-6 text-left grid grid-cols-2 grid-rows-3 text-[#888EB0] items-center mb-4 md:grid-rows-1 md:grid-cols-5'>
+		<div className='border border-black rounded-lg w-full px-4 py-6 text-left grid grid-cols-2 grid-rows-3 text-[#888EB0] items-center md:grid-rows-1 md:grid-cols-5'>
 			<p>
 				#<strong className='text-black order-1'>{receipt_id}</strong>
 			</p>

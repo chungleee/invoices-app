@@ -36,7 +36,7 @@ const Home = () => {
 				</Link>
 			</div>
 
-			<section className='w-full grow flex flex-col justify-center items-center'>
+			<section className='w-full grow flex flex-col justify-center items-center gap-y-6'>
 				{!invoices.length ? (
 					<div className='text-center w-2/3 flex flex-col justify-center items-center'>
 						<img src='/assets/invoice.svg' alt='No invoices image' />

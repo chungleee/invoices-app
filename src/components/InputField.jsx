@@ -3,8 +3,8 @@ import { useFormContext } from "react-hook-form";
 const InputField = ({ label, name, className }) => {
 	const { register } = useFormContext();
 	return (
-		<div className={`flex flex-col ${className}`}>
-			<label className='mb-2 text-sm text-[#7E88C3]' htmlFor={name}>
+		<div className={`flex flex-col gap-y-2 ${className}`}>
+			<label className='text-sm text-[#7E88C3]' htmlFor={name}>
 				{label}
 			</label>
 			<input

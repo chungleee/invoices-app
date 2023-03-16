@@ -3,9 +3,22 @@ import { useForm, FormProvider } from "react-hook-form";
 import LeftArrowIcon from "../components/LeftArrowIcon";
 import BillTo from "../components/BillTo";
 import BillFrom from "../components/BillFrom";
+import CreateInvoiceActionButtons from "../components/CreateInvoiceActionButtons";
+import CreateInvoiceItemList from "../components/CreateInvoiceItemList";
 
 const CreateInvoice = () => {
-	const methods = useForm();
+	const methods = useForm({
+		defaultValues: {
+			invoiceItemList: [
+				{
+					itemName: "",
+					itemQuantity: 0,
+					itemPrice: 0,
+					priceTotal: 0,
+				},
+			],
+		},
+	});
 
 	const onSubmit = ({
 		streetAddress,
@@ -41,28 +54,10 @@ const CreateInvoice = () => {
 					>
 						<BillFrom />
 						<BillTo />
-
-						<div className='col-span-2 flex justify-between py-4 -mx-4 px-4 bg-white'>
-							<button
-								className='rounded-full px-4 py-4 bg-[#F9FAFE] text-[#7E88C3] text-sm font-semibold'
-								type='button'
-							>
-								Discard
-							</button>
-							<button
-								className='rounded-full px-4 py-4 bg-[#373B53] text-[#888EB0] text-sm font-semibold'
-								type='button'
-							>
-								Save as draft
-							</button>
-							<button
-								className='rounded-full px-4 py-4 bg-[#7C5DFA] text-sm font-semibold text-white'
-								type='button'
-								onClick={methods.handleSubmit(onSubmit)}
-							>
-								Save & Send
-							</button>
-						</div>
+						<CreateInvoiceItemList />
+						<CreateInvoiceActionButtons
+							onSubmitHandler={methods.handleSubmit(onSubmit)}
+						/>
 					</form>
 				</FormProvider>
 			</section>

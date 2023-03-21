@@ -12,7 +12,7 @@ const CreateInvoice = () => {
 			invoiceItemList: [
 				{
 					itemName: "",
-					itemQuantity: 0,
+					itemQuantity: 1,
 					itemPrice: 0,
 					priceTotal: 0,
 				},
@@ -35,7 +35,7 @@ const CreateInvoice = () => {
 	};
 
 	return (
-		<main className='pt-6	px-4 bg-[#F9FAFE]'>
+		<main className='pt-6	px-4 bg-[#ffffff]'>
 			<Link href='/'>
 				<a href='/' className='flex items-center w-fit'>
 					<span>

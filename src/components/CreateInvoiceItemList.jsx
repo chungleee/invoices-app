@@ -1,11 +1,23 @@
-import { useFieldArray, useFormContext } from "react-hook-form";
+import { set, useFieldArray, useFormContext } from "react-hook-form";
 import TrashbinIcon from "./TrashbinIcon";
 
 const CreateInvoiceItemList = () => {
-	const { register, getValues } = useFormContext();
+	const { register, getValues, setValue } = useFormContext();
+
 	const { fields, append, remove } = useFieldArray({
 		name: "invoiceItemList",
 	});
+
+	const calculateTotalPrice = (
+		indexedInvoiceItemPrice,
+		indexedInvoiceItemQuantity
+	) => {
+		let itemPrice = getValues(indexedInvoiceItemPrice);
+		let itemQuantity = getValues(indexedInvoiceItemQuantity);
+		let total = itemQuantity * itemPrice;
+
+		return total;
+	};
 
 	return (
 		<>
@@ -26,7 +38,7 @@ const CreateInvoiceItemList = () => {
 								{...register(`invoiceItemList.${index}.itemName`)}
 							/>
 						</div>
-						<div className='flex flex-col  gap-y-2 col-span-1'>
+						<div className='flex flex-col  gap-y-2 col-span-1 w-16'>
 							<label className='text-[#7E88C3] text-sm' htmlFor='itemQuantity'>
 								Qty.
 							</label>
@@ -36,10 +48,18 @@ const CreateInvoiceItemList = () => {
 								min={0}
 								name='itemQuantity'
 								id='itemQuantity'
-								{...register(`invoiceItemList.${index}.itemQuantity`)}
+								{...register(`invoiceItemList.${index}.itemQuantity`, {
+									onBlur: (e) => {
+										const total = calculateTotalPrice(
+											`invoiceItemList[${index}].itemPrice`,
+											`invoiceItemList[${index}].itemQuantity`
+										);
+										setValue(`invoiceItemList[${index}].priceTotal`, total);
+									},
+								})}
 							/>
 						</div>
-						<div className='flex flex-col gap-y-2  col-span-1'>
+						<div className='flex flex-col gap-y-2  col-span-1 w-24'>
 							<label className='text-[#7E88C3] text-sm' htmlFor='itemPrice'>
 								Price
 							</label>
@@ -48,10 +68,19 @@ const CreateInvoiceItemList = () => {
 								type='number'
 								name='itemPrice'
 								id='itemPrice'
-								{...register(`invoiceItemList.${index}.itemPrice`)}
+								{...register(`invoiceItemList.${index}.itemPrice`, {
+									onBlur: (e) => {
+										const total = calculateTotalPrice(
+											`invoiceItemList[${index}].itemPrice`,
+											`invoiceItemList[${index}].itemQuantity`
+										);
+
+										setValue(`invoiceItemList[${index}].priceTotal`, total);
+									},
+								})}
 							/>
 						</div>
-						<div className='flex flex-col  gap-y-2 col-span-1'>
+						<div className='flex flex-col  gap-y-2 col-span-1 w-24'>
 							<label className='text-[#7E88C3] text-sm' htmlFor='priceTotal'>
 								Total
 							</label>
@@ -79,12 +108,13 @@ const CreateInvoiceItemList = () => {
 			})}
 
 			<button
+				className='rounded-full bg-[#F9FAFE] col-span-2 font-bold text-base py-4 mt-6 text-[#7E88C3]'
 				type='button'
 				onClick={() => {
-					append();
+					append({ itemQuantity: 1, itemPrice: 0 });
 				}}
 			>
-				new item
+				+ Add New Item
 			</button>
 		</>
 	);

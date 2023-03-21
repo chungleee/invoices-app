@@ -49,7 +49,9 @@ const Home = () => {
 					</div>
 				) : (
 					invoices.map((invoice) => {
-						return <InvoiceCard invoiceData={invoice} />;
+						return (
+							<InvoiceCard invoiceData={invoice} key={invoice.receipt_id} />
+						);
 					})
 				)}
 			</section>

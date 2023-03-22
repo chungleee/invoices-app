@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "wouter";
 import RightArrowIcon from "./RightArrowIcon";
 
 const InvoiceCard = ({ invoiceData }) => {
@@ -33,7 +34,14 @@ const InvoiceCard = ({ invoiceData }) => {
 					{status}
 				</p>
 				<span className='hidden md:inline-block'>
-					<RightArrowIcon />
+					<Link
+						invoiceData={invoiceData}
+						href={`/invoices/${invoiceData.receipt_id}`}
+					>
+						<a>
+							<RightArrowIcon />
+						</a>
+					</Link>
 				</span>
 			</div>
 		</div>

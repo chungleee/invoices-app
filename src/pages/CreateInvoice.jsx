@@ -35,7 +35,7 @@ const CreateInvoice = () => {
 	};
 
 	return (
-		<main className='pt-6	px-4 bg-[#ffffff]'>
+		<main className='pt-6	px-4 bg-[#ffffff] lg:h-screen lg:w-3/4 lg:mx-auto  lg:overflow-auto'>
 			<Link href='/'>
 				<a href='/' className='flex items-center w-fit'>
 					<span>

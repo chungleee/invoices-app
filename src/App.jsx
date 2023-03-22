@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import { Route } from "wouter";
 import Home from "./pages/Home";
 import CreateInvoice from "./pages/CreateInvoice";
+import Invoice from "./pages/Invoice";
 
 function App() {
 	return (
@@ -10,6 +11,7 @@ function App() {
 
 			<Route path='/' component={Home} />
 			<Route path='/create-invoice' component={CreateInvoice} />
+			<Route path='/invoices/:invoiceId' component={Invoice} />
 		</div>
 	);
 }

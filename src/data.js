@@ -5,6 +5,36 @@ const data = [
 		dueDate: "20/09/2021",
 		amountDue: 550.0,
 		receipt_id: "1",
+		billFrom: {
+			streetAddress: "19 Union Terrace",
+			city: "London",
+			postalCode: "M5T 1B3",
+			country: "United Kingdom",
+		},
+		billTo: {
+			clientName: "King Bob",
+			clientEmail: "kingbob@me.ca",
+			clientStreetAddress: "bob street",
+			clientCity: "Bob City",
+			clientCountry: "Bob Country",
+			clientPostalCode: "K1N B0B",
+			invoiceDate: "03/24/23",
+			projectDescription: "Testing invoice app",
+		},
+		invoiceItemList: [
+			{
+				itemName: "Banner Design",
+				itemQuantity: 1,
+				itemPrice: (50.99).toFixed(2),
+				priceTotal: (50.99).toFixed(2),
+			},
+			{
+				itemName: "Email Design",
+				itemQuantity: 1,
+				itemPrice: (100.5).toFixed(2),
+				priceTotal: (100.5).toFixed(2),
+			},
+		],
 	},
 	{
 		fullName: "king bob",

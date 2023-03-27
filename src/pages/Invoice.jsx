@@ -36,7 +36,7 @@ const InvoiceSection = ({ billTo, billFrom, receipt_id, invoiceItemList }) => {
 
 	return (
 		<section className='bg-white rounded-lg px-8 py-10'>
-			<div className='flex flex-col gap-y-8'>
+			<div className='flex flex-col gap-y-8 mb-8 font-light'>
 				<div className='text-[#7E88C3]'>
 					<h2>
 						#<span className='font-bold text-black'>{receipt_id}</span>

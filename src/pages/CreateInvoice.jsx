@@ -5,8 +5,17 @@ import BillTo from "../components/BillTo";
 import BillFrom from "../components/BillFrom";
 import CreateInvoiceActionButtons from "../components/CreateInvoiceActionButtons";
 import CreateInvoiceItemList from "../components/CreateInvoiceItemList";
+import useInvoicesStore from "../store";
 
 const CreateInvoice = () => {
+	const addInvoice = useInvoicesStore((state) => {
+		return state.addInvoice;
+	});
+
+	const invoices = useInvoicesStore((state) => {
+		return state.invoices;
+	});
+
 	const methods = useForm({
 		defaultValues: {
 			invoiceItemList: [
@@ -20,19 +29,10 @@ const CreateInvoice = () => {
 		},
 	});
 
-	const onSubmit = ({
-		streetAddress,
-		city,
-		postalCode,
-		country,
-		...billTo
-	}) => {
-		const from = { streetAddress, city, postalCode, country };
-		const to = { ...billTo };
-
-		console.log("from obj: ", from);
-		console.log("to obj: ", to);
+	const onSubmit = (data) => {
+		addInvoice(data);
 	};
+	console.log("invoices: ", invoices);
 
 	return (
 		<main className='pt-6	px-4 bg-[#ffffff] lg:h-screen lg:w-3/4 lg:mx-auto  lg:overflow-auto'>

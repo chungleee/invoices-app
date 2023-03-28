@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { data } from "../data";
 import LeftArrowIcon from "../components/LeftArrowIcon";
+import InvoiceActionButtons from "../components/InvoiceActionButtons";
 
 const Status = ({ status }) => {
 	return (
@@ -112,6 +113,7 @@ const InvoiceSection = ({ billTo, billFrom, receipt_id, invoiceItemList }) => {
 const Invoice = ({ params }) => {
 	const { invoiceId } = params;
 	const [invoiceData, setInvoiceData] = useState({});
+	const [isMobileSize, setIsMobileSize] = useState();
 
 	const getInvoiceData = (id) => {
 		const result = data.find((item) => {
@@ -122,6 +124,32 @@ const Invoice = ({ params }) => {
 
 	useEffect(() => {
 		getInvoiceData(invoiceId);
+	}, []);
+
+	useEffect(() => {
+		if (window.innerWidth <= 768) {
+			setIsMobileSize(true);
+		} else {
+			setIsMobileSize(false);
+		}
+
+		console.log(window.innerWidth);
+
+		const handleResize = (e) => {
+			if (e.matches) {
+				setIsMobileSize(false);
+			} else {
+				setIsMobileSize(true);
+			}
+		};
+
+		window
+			.matchMedia("(min-width: 768px)")
+			.addEventListener("change", handleResize);
+
+		return () => {
+			window.removeEventListener("change", handleResize);
+		};
 	}, []);
 
 	if (!Object.keys(invoiceData).length) {
@@ -148,6 +176,12 @@ const Invoice = ({ params }) => {
 				invoiceItemList={invoiceItemList}
 				receipt_id={receipt_id}
 			/>
+
+			{isMobileSize ? (
+				<div className='bg-white py-8 px-8 -mx-8 mt-6'>
+					<InvoiceActionButtons />
+				</div>
+			) : null}
 		</main>
 	);
 };

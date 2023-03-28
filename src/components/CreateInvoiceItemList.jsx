@@ -54,7 +54,10 @@ const CreateInvoiceItemList = () => {
 											`invoiceItemList[${index}].itemPrice`,
 											`invoiceItemList[${index}].itemQuantity`
 										);
-										setValue(`invoiceItemList[${index}].priceTotal`, total);
+										setValue(
+											`invoiceItemList[${index}].priceTotal`,
+											total.toFixed(2)
+										);
 									},
 								})}
 							/>
@@ -75,7 +78,10 @@ const CreateInvoiceItemList = () => {
 											`invoiceItemList[${index}].itemQuantity`
 										);
 
-										setValue(`invoiceItemList[${index}].priceTotal`, total);
+										setValue(
+											`invoiceItemList[${index}].priceTotal`,
+											total.toFixed(2)
+										);
 									},
 								})}
 							/>

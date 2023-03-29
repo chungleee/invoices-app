@@ -1,4 +1,4 @@
-const data = [
+let data = [
 	{
 		fullName: "Leon Chung",
 		status: "paid",

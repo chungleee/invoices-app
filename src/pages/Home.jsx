@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import CreateNewIcon from "../components/CreateNewIcon";
 import InvoiceCard from "../components/InvoiceCard";
-import { data } from "../data";
+import useInvoicesStore from "../store";
 
 const Home = () => {
-	const [invoices, setInvoices] = useState([]);
-
-	useEffect(() => {
-		setInvoices(data);
-	}, []);
+	const { invoices } = useInvoicesStore((state) => {
+		return state;
+	});
 
 	return (
 		<main className='px-6 py-8 h-[calc(100vh-80px)] flex flex-col lg:w-3/4 lg:mx-auto lg:overflow-auto lg:h-screen'>

@@ -30,9 +30,9 @@ const CreateInvoice = () => {
 	});
 
 	const onSubmit = (data) => {
+		console.log(data);
 		addInvoice(data);
 	};
-	console.log("invoices: ", invoices);
 
 	return (
 		<main className='pt-6	px-4 bg-[#ffffff] lg:h-screen lg:w-3/4 lg:mx-auto  lg:overflow-auto'>
